@@ -1,18 +1,34 @@
 package com.lib.library.features.Author;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 
+@Table(name = "author")
+@Entity(name = "author")
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String public_id;
+//    @GeneratedValue(strategy = GenerationType.UUID)
+    private String publicId;
     private String name;
     private String countryOfBirth;
     private Date dateOfBirth;
 
-    // Getters e setters
+    public Author(AuthorRequestDTO data) {
+        this.name = data.name();
+        this.countryOfBirth = data.countryOfBirth();
+        this.dateOfBirth = data.dateOfBirth();
+    }
 
     public Long getId() {
         return id;
@@ -22,12 +38,12 @@ public class Author {
         this.id = id;
     }
 
-    public String getPublic_id() {
-        return public_id;
+    public String getPublicId() {
+        return publicId;
     }
 
-    public void setPublic_id() {
-        this.public_id = public_id;
+    public void setPublicId(String publicId) {
+        this.publicId = publicId;
     }
 
     public String getName() {

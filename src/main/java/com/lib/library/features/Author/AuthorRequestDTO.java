@@ -1,4 +1,6 @@
 package com.lib.library.features.Author;
 
-public record AuthorRequestDTO(String name, String countryOfBirth, String dateOfBirth) {
+import java.util.Date;
+
+public record AuthorRequestDTO(String name, String countryOfBirth, Date dateOfBirth) {
 }
