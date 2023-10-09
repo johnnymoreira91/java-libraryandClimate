@@ -2,18 +2,16 @@ package com.lib.library.features.Author;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Table(name = "author")
-@Entity(name = "author")
-@Getter
-@NoArgsConstructor
+@Entity
+@Data
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")
+@NoArgsConstructor
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
