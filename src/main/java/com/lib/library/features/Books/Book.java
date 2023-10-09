@@ -1,16 +1,37 @@
 package com.lib.library.features.Books;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Table(name = "book")
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String public_id;
+    private String publicId;
     private String title;
     private String description;
+    private Integer authorId;
+
+    public Book(BookRequestDTO data) {
+        this.authorId = data.authorId();
+        this.title = data.title();
+        this.description = data.description();
+    }
+
+    public Integer getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(Integer authorId) {
+        this.authorId = authorId;
+    }
 
     public Long getId() {
         return id;
@@ -20,12 +41,12 @@ public class Book {
         this.id = id;
     }
 
-    public String getPublic_id() {
-        return public_id;
+    public String getPublicId() {
+        return publicId;
     }
 
-    public void setPublic_id() {
-        this.public_id = public_id;
+    public void setPublic_d() {
+        this.publicId = publicId;
     }
 
     public String getTitle() {
